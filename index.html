@@ -20,11 +20,14 @@
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">Text</label>
-    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Enter text">
+    <textarea class="form-control" id="text" rows="3"></textarea>
   </div>
 
-  <button class="btn btn-primary" onclick="">Submit</button>
+  <button class="btn btn-primary" onclick="submitLink()">Submit</button>
 </form>
+<div>
+<p id="show"></p>
+</div>
 <script>
 function generateLink(phoneNumber, text){
   return "https://wa.me/"+phoneNumber.toString()+"?text="+text;
@@ -32,8 +35,18 @@ function generateLink(phoneNumber, text){
 function addNextLine(){
   return '%0a';
 }
-function addNextLine(){
+function addNextWord(){
   return '+';
 }
+function submitLink(){
+	var phoneNumber = document.getElementById("phoneNumber").value;
+    var text = document.getElementById("text").value;
+    
+    var link = generateLink(phoneNumber,text);
+    
+	document.getElementById("show").innerHTML = link;
+}
+
+
 </script>
 </body>
