@@ -48,7 +48,7 @@ function submitLink(){
     for(var i=0;i<text.length;i++){
     	if(text.codePointAt(i)==10){
         	newText += addNextLine();
-        }else if(text.codePointAt(i)==10){
+        }else if(text.codePointAt(i)==32){
         	newText += addNextWord();
         }else{
         	newText += text[i];
