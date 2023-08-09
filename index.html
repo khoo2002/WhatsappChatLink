@@ -29,6 +29,7 @@
 <p id="show"></p>
 </div>
 <script>
+
 function generateLink(phoneNumber, text){
   return "https://wa.me/"+phoneNumber.toString()+"?text="+text;
 }
@@ -41,8 +42,19 @@ function addNextWord(){
 function submitLink(){
 	var phoneNumber = document.getElementById("phoneNumber").value;
     var text = document.getElementById("text").value;
-    
-    var link = generateLink(phoneNumber,text);
+    var newText = "";
+    // next line = 10
+    // next word = 32
+    for(var i=0;i<text.length;i++){
+    	if(text.codePointAt(i)==10){
+        	newText += addNextLine();
+        }else if(text.codePointAt(i)==10){
+        	newText += addNextWord();
+        }else{
+        	newText += text[i];
+        }
+    }
+    var link = generateLink(phoneNumber,newText);
     
 	document.getElementById("show").innerHTML = link;
 }
